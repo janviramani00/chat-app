@@ -28,7 +28,8 @@ import { UserService } from 'src/user/service/user-service/user.service';
     const params = request.params;
     const user: UserI = request.user;
 
-     this.userService.findOne(user.id)
+    const find = this.userService.findOne(user.id);
+     if(find){
      let haspermission = false;
      if (user.id === Number(params.id)) {
          haspermission = true;
@@ -38,6 +39,6 @@ import { UserService } from 'src/user/service/user-service/user.service';
         return user && haspermission;
         }
       }
-       
+    }
         
       
