@@ -40,5 +40,4 @@ import { UserService } from 'src/user/service/user-service/user.service';
         }
       }
     }
-        
       
