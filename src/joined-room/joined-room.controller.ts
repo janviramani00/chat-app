@@ -27,4 +27,9 @@ export class JoinedRoomController {
   async res(@Param('id') id: string, @Body() user: JoinedRoomI): Promise<any> {
     return this.joinedroomService.res(Number(id), user);
   }
+
+  @Get()
+  async get(room: JoinedRoomI): Promise<JoinedRoomI[]> {
+    return this.joinedroomService.findAll(room);
+  }
 }

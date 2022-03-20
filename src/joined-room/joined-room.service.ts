@@ -27,6 +27,10 @@ export class JoinedRoomService {
     return this.joinedRoomRepository.find({ room });
   }
 
+  async findAll(room: JoinedRoomI): Promise<JoinedRoomI[]> {
+    return this.joinedRoomRepository.find(room)
+  }
+
   async res(id: number, user: JoinedRoomI): Promise<any>{
     delete user.user;
     delete user.room;
