@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, Query } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Put, Query } from '@nestjs/common';
 import { RoomI } from 'src/room/room.interface';
 import { UserI } from 'src/user/model/user.interface';
 import { JoinedRoomI } from './joined-room.interface';
@@ -21,5 +21,10 @@ export class JoinedRoomController {
   @Get('/find-by-room')
   async findByRoom(@Query('room') room: RoomI) {
     return this.joinedroomService.findByRoom(room);
+  }
+
+  @Put('res/:id')
+  async res(@Param('id') id: string, @Body() user: JoinedRoomI): Promise<any> {
+    return this.joinedroomService.res(Number(id), user);
   }
 }

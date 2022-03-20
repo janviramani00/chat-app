@@ -21,7 +21,16 @@ export class JoinedRoomEntity {
   @JoinColumn()
   user: UserEntity;
 
+  @ManyToOne(() => UserEntity, (user) => user.joinedRooms)
+  @JoinColumn()
+  user1: UserEntity;
+
   @ManyToOne(() => RoomEntity, (room) => room.joinedUsers)
   @JoinColumn()
   room: RoomEntity;
+
+  @Column({
+    default: "pending"
+  })
+  status: string;
 }
